@@ -34,7 +34,6 @@ class DepressionDetectionClassifier_ML_xu_interpretable(DepressionDetectionClass
         self.clf = utils_ml.get_clf("adaboost", self.model_params, direct_param_flag = False)
     def fit(self, X, y):
         assert set(self.selected_features).issubset(set(X.columns))
-        set_random_seed(42)
         return self.clf.fit(X[self.selected_features], y)
     def predict(self, X, y=None):
         return self.clf.predict(X[self.selected_features])
@@ -585,7 +584,6 @@ class DepressionDetectionAlgorithm_ML_xu_interpretable(DepressionDetectionAlgori
 
     def prep_model(self, data_train: DataRepo, criteria: str = "balanced_acc") -> sklearn.base.ClassifierMixin:
         super().prep_model()
-        set_random_seed(42)
 
         data_train = deepcopy(data_train)
         

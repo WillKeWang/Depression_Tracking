@@ -24,15 +24,6 @@ class DataRepo():
     def __getitem__(self, key):
         return DataRepo(self.X[key], self.y[key], self.pids[key])
 
-class DataRepo_tf(DataRepo):
-    """A variant of DataRepo. It has the same structure of DataRepo.
-        It acts as a special data type for tensorflow dataset."""
-    def __init__(self, X:tf.data.Dataset or Dict[str, tf.data.Dataset], y: List[bool] or np.ndarray, pids: List[bool] or np.ndarray):
-        super().__init__(None, None, None)
-        self.X = X
-        self.y = y
-        self.pids = pids
-
 class DataRepo_np(DataRepo):
     """A variant of DataRepo. It only saves input X as np.ndarray.
         So it has the additional structure of saving columns information.

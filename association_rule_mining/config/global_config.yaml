@@ -19,11 +19,4 @@ ml:
     #     True only when re-running the exact same algorithm
     save_and_reload: False
 
-# config for deep learning based algorithms
-dl:
-  training_params:
-    best_epoch_strategy: "direct" # which strategy to pick the best training epoch
-    # whether to skip training
-    #     True only when the model training is finished
-    skip_training: False 
 

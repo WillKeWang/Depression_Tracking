@@ -31,7 +31,6 @@ class DepressionDetectionClassifier_ML_xu_personalized(DepressionDetectionClassi
     
     def fit(self, X, y):
         assert set(self.selected_features).issubset(set(X.columns))
-        set_random_seed(42)
         self.data_memory_X = deepcopy(X)
         self.data_memory_y = deepcopy(y)
         return None
@@ -218,7 +217,6 @@ class DepressionDetectionAlgorithm_ML_xu_personalized(DepressionDetectionAlgorit
         return df_userbehavior_profile_perfeature
 
     def prep_data_repo(self, dataset:DatasetDict, flag_train:bool = True) -> DataRepo:
-        set_random_seed(42)
 
         Path(self.results_save_folder).mkdir(parents=True, exist_ok=True)
         self.save_file_path = os.path.join(self.results_save_folder, dataset.key + "--" + dataset.prediction_target + ".pkl")

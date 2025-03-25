@@ -7,5 +7,5 @@ MODEL_PATH = os.path.join(PROJECT_ROOT, "model")
 CONFIG_PATH = os.path.join(PROJECT_ROOT, "config")
 UTILS_PATH = os.path.join(PROJECT_ROOT, "utils")
 DATA_PATH = os.path.join(PROJECT_ROOT, "data")
-RAWDATA_PATH = os.path.join(PROJECT_ROOT, "data_raw")
+RAWDATA_PATH = "/home/willkewang/Datasets/GLOBEM/"
 TMP_PATH = os.path.join(PROJECT_ROOT, "tmp")

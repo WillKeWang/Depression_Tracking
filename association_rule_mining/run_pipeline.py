@@ -1,8 +1,12 @@
 import os
 import argparse
-from data_loader.data_loader_ml import load_dataset
+from data_loader.data_loader_ml import data_loader_single
 from algorithm.ml_xu_interpretable import DepressionDetectionAlgorithm_ML_xu_interpretable
 from algorithm.ml_xu_personalized import DepressionDetectionAlgorithm_ML_xu_personalized
+
+# Define a helper load_dataset to wrap data_loader_single with default institution and phase.
+def load_dataset(prediction_target, institution="INS-W", phase=1, flag_more_feat_types=False):
+    return data_loader_single(prediction_target, institution, phase, flag_more_feat_types)
 
 def main(prediction_target):
     print("Loading dataset...")
