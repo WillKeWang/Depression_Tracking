@@ -1,0 +1,64 @@
+tokenizer_name_or_path: "/home/jupyter/workspaces/wearableehrgoogle/cehrgpt_without_values/cehrgpt_pretrain_16_layers_768_embeddings_768_sub_time_tokenization_tte_same_weights"
+model_name_or_path: "/home/jupyter/workspaces/wearableehrgoogle/cehrgpt_without_values/cehrgpt_pretrain_16_layers_768_embeddings_768_sub_time_tokenization_tte_same_weights"
+# pretrained_embedding_path:
+data_folder: "/home/jupyter/workspaces/wearableehrgoogle/allofus_omop_v8/patient_sequence_with_inpatient_hour_token/patient_sequence/train"
+dataset_prepared_path: "/home/jupyter/workspaces/wearableehrgoogle/dataset_prepared"
+
+validation_split_percentage: 0.0001
+validation_split_num: 1000
+preprocessing_num_workers: 16
+preprocessing_batch_size: 5000
+streaming: false
+drop_long_sequences: true
+
+vocab_size: 50000
+min_frequency: 0
+
+do_train: true
+overwrite_output_dir: false
+seed: 42
+
+# torch dataloader configs
+dataloader_num_workers: 8
+dataloader_prefetch_factor: 2
+
+output_dir: "/home/jupyter/workspaces/wearableehrgoogle/cehrgpt_without_values/cehrgpt_pretrain_16_layers_768_embeddings_768_sub_time_tokenization_tte_same_weights"
+evaluation_strategy: "no"
+save_strategy: "steps"
+save_steps: 5000
+learning_rate: 0.0001
+per_device_train_batch_size: 2
+per_device_eval_batch_size: 16
+gradient_accumulation_steps: 2
+num_train_epochs: 10
+
+#   torch_dtype: "bfloat16"
+    # bf16: true
+
+n_pretrained_embeddings_layers: 1
+hidden_size: 768
+n_head: 12
+num_hidden_layers: 8
+max_position_embeddings: 2048
+exclude_position_ids: true
+include_values: false
+use_sub_time_tokenization: true
+include_ttv_prediction: true
+time_token_loss_weight: 1.0
+time_to_visit_loss_weight: 1.0
+shuffle_records: false
+drop_long_sequences: true
+
+# deepspeed: deepspeed_configs/zero1.json
+
+# max_steps: 50000
+warmup_steps: 100
+weight_decay: 0.01
+logging_dir: "./logs"
+logging_steps: 10
+save_total_limit: 10
+load_best_model_at_end: false
+metric_for_best_model: "eval_loss"
+greater_is_better: false
+
+report_to: "none"

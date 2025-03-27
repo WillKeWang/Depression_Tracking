@@ -124,7 +124,6 @@ class DepressionDetectionAlgorithm_ML_xu_interpretable(DepressionDetectionAlgori
         @ray.remote
         def feature_select_mutual_info(df_full, y, feats, slice_key):
             signal.signal(signal.SIGTERM, lambda signalNumber, frame: False)
-            set_random_seed(42)
             df = df_full[feats]
             top_features = feats
             num_repeat = 30
@@ -411,7 +410,6 @@ class DepressionDetectionAlgorithm_ML_xu_interpretable(DepressionDetectionAlgori
         return results_pool
 
     def prep_data_repo(self, dataset:DatasetDict, flag_train:bool = True) -> DataRepo:
-        set_random_seed(42)
         df_datapoints = deepcopy(dataset.datapoints)
 
         pids_all = df_datapoints["pid"].unique()
@@ -534,7 +532,8 @@ class DepressionDetectionAlgorithm_ML_xu_interpretable(DepressionDetectionAlgori
     def get_epoch_features(self, df: pd.DataFrame, wk: str):
         if (self.flag_use_norm_features):
             df_mean = df[self.feature_list_norm].mean(axis = 0)
-        else:    
+        else:
+            print(self.feature_list)    
             df_mean = df[self.feature_list].mean(axis = 0)
         df_mean.index = [f + f"_{wk}_mean" for f in self.feature_list]
         if (self.flag_use_norm_features):

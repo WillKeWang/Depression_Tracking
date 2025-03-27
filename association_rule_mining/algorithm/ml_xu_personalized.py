@@ -422,7 +422,6 @@ class DepressionDetectionAlgorithm_ML_xu_personalized(DepressionDetectionAlgorit
 
     def prep_model(self, data_train: DataRepo, criteria: str = "balanced_acc") -> sklearn.base.ClassifierMixin:
         super().prep_model()
-        set_random_seed(42)
         assert hasattr(data_train, 'key')
 
         df_singlefeature_results_file_path = os.path.join(self.results_save_folder,
