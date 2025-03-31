@@ -9,8 +9,8 @@
 #SBATCH --mail-type=ALL                       # send email alert on all events
 
 # Load necessary modules (if applicable)
-module load spark/3.1.2
-module load python/3.8
+module load spark
+module load python
 
 # Activate virtual environment if needed (optional)
 # source ~/envs/pyspark-env/bin/activate
