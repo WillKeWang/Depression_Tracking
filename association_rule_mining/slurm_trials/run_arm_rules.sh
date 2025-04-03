@@ -16,7 +16,7 @@ module load conda/3
 srun --pty /bin/bash
 conda create -n spark-env python=3.8 -y
 conda activate spark-env
-conda install -c conda-forge pyspark apache-spark -y
+conda install -c conda-forge pyspark -y
 
 # 2) Set JAVA_HOME if required for Spark
 export JAVA_HOME=/usr
@@ -41,10 +41,9 @@ SUBJECT_LIST="INS-W_166#INS-W_1 INS-W_023#INS-W_1 INS-W_116#INS-W_1 INS-W_137#IN
 INPUT_DATA_PATH="/groups/xx2489_gp/kw3215/Datasets/globem/INS-W_1/FeatureData/rapids.csv"
 OUTPUT_FILE="arm_behavior_rules.csv"
 
-spark-submit --master "$sparkmaster" \
-    arm_rules_spark.py \
-    --subjects "$SUBJECT_LIST" \
-    --data_path "$INPUT_DATA_PATH" \
-    --output "$OUTPUT_FILE" \
-    --min_support 0.3 \
-    --min_confidence 0.7
+python arm_rules_spark.py \
+  --subjects "$SUBJECT_LIST" \
+  --data_path "$INPUT_DATA_PATH" \
+  --output "$OUTPUT_FILE" \
+  --min_support 0.3 \
+  --min_confidence 0.7
