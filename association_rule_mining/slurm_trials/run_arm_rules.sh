@@ -16,7 +16,7 @@ module load conda/3
 srun --pty /bin/bash
 conda create -n spark-env python=3.8 -y
 conda activate spark-env
-conda install -c conda-forge pyspark spark -y
+conda install -c conda-forge pyspark apache-spark -y
 
 # 2) Set JAVA_HOME if required for Spark
 export JAVA_HOME=/usr
